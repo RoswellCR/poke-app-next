@@ -32,7 +32,7 @@ interface Props  {
 
 export const getStaticProps: GetStaticProps = async (props) => {
     // const { data } = await  // your fetch function here 
-    const {data} = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151');
+    const {data} = await pokeApi.get<PokemonListResponse>('/pokemon?limit=30');
     //console.log(data);
 
     //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/130.svg
