@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 import { GetStaticPaths } from 'next'
 import { GetStaticProps, NextPage } from "next";
-import { useRouter } from "next/router";
+import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 
 import confetti from 'canvas-confetti';
 
@@ -116,10 +115,11 @@ const PokemonPage: NextPage<Props> = ({pokemon}) => {
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   //const { data } = await  // your fetch function here 
   
-  //se crea un array con 151 elementos de tipo string
-  const pokemon151 = [...Array(151)].map((value, index)=>`${index + 1}`)
+  //se crea un array con 30 elementos de tipo string
+  const pokemon30 = [...Array(30)].map((value, index)=>`${index + 1}`)
+  
   return {
-    paths: pokemon151.map(id=>({
+    paths: pokemon30.map(id=>({
       params: {id: id}
     }))
     ,
@@ -133,9 +133,16 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   
   const {data} = await pokeApi.get<Pokemon>(`/pokemon/${id}`);
 
+  //optimizando la data para extraer solo lo necesario
+  const pokemon = {
+    id: data.id,
+    name: data.name,
+    sprites: data.sprites
+  }
+
   return {
       props: {
-         pokemon: data  
+         pokemon: pokemon 
       }
   }
 }
