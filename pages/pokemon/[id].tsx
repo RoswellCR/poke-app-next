@@ -43,8 +43,7 @@ const PokemonPage: NextPage<Props> = ({pokemon}) => {
         y:0
       }
     })
-
-    
+  
   }
 
   return (
