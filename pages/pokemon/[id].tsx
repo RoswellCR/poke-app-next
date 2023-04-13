@@ -23,7 +23,7 @@ const PokemonPage: NextPage<Props> = ({pokemon}) => {
 
 
   //const router = useRouter();
-  //console.log(pokemon);
+  
 
 
   const onToggleFavorite=()=>{
